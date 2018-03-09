@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/blog.css">
+</head>
+<body>
+<div class="main">
+    <!--登录注册按钮-->
+    {%if username%}
+    <div class="setings">
+        会员:
+        <b style="color:#ff0000"> {{username}}</b>
+        <span><a href="/admin">后台管理</a></span>
+        <span id="logout">退出</span>
+    </div>
+    {%else%}
+    <!--登录注册按钮-->
+    <div class="sing">
+        <span id="dl">登录</span>
+        <span id="zc">注册</span>
+
+    </div>
+    <!--注册-->
+    <div class="singin">
+        <div class="h3"><h3>注册新用户</h3><span id="del">×</span></div>
+        <div class="mark">
+
+            <p>
+                <span>帐号：</span><input type="text" name="username" id="username" placeholder="用户名(英文或数字或符号)" ><i class="reusername">用户名已存在</i>
+            </p>
+            <p>
+                <span>密码：</span><input type="password" name="password" id="password" placeholder="密码" >
+            </p>
+            <p>
+                <span>确认密码：</span><input type="password" name="repassword" id="repassword" placeholder="确认密码" ><i class="repassword">密码不一致</i>
+            </p>
+
+        </div>
+        <div id="btn"><button class="btn btn-register" >注册</button>  <span>已有帐号？<a href="javascript:;" id="zc-dl">立即登录</a></span></div>
+
+    </div>
+    <!--登录-->
+    <div class="singin1">
+        <div class="h3"><h3>用户登录</h3><span id="del1">×</span></div>
+        <div class="mark">
+
+            <p>
+                <span>帐号：</span><input type="text" name="username" id="singusername" placeholder="用户名" ><i class="singusername"></i>
+            </p>
+            <p>
+                <span>密码：</span><input type="password" name="password" id="singpassword" placeholder="密码" ><i class="singpassword"></i>
+            </p>
+        </div>
+        <div id="btn"><button class="btn btn-login">登录</button>  <span>没有有帐号？<a href="javascript:;" id="dl-zc">注册一个</a></span></div>
+
+    </div>
+    {%endif%}
+    <!--注册 登录 end-->
+
+    <nav class="nav">
+        <li><a href="/">play理财平台</a></li>
+        <!--从数据库中显示-->
+        <!--分类信息-->
+        {%for item in categorys%}
+        <li><a href="/?category={{item.id}}">{{item.flname}}</a></li>
+        {%endfor%}
+    </nav>
+
+</body>
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/drag.js"></script>
+<script src="/js/login.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/socket.js"></script>
+</html>
